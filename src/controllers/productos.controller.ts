@@ -6,6 +6,7 @@ import {
   Delete,
   Param,
   Put,
+  Query,
   HttpStatus,
   HttpCode,
   ParseIntPipe,
@@ -18,18 +19,18 @@ import { ProductosService } from './../services/productos.service';
 export class ProductosController {
   constructor(private productsService: ProductosService) {}
 
-  /*@Get()
+  @Get()
   getProducts(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand = '',
   ) {
     return this.productsService.findAll();
-  }*/
+  }
 
-  @Get('product/:idProduct')
-  getProduct(@Param('idProduct', ParseIntPipe) idProduct: string): string {
-    return `Producto con ID ${idProduct}`;
+  @Get(':id')
+  get(@Param('id', ParseIntPipe) id: number) {
+    return this.productsService.findOne(id);
   }
 
   @Get('filter')
