@@ -1,19 +1,67 @@
-import { Body, Controller, Post, Delete, Param, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Put,
+  HttpStatus,
+  HttpCode,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { CreateProductDTO } from 'src/dtos/productos.dto';
+//import { ParseIntPipe } from '@nestjs/common';
+import { ProductosService } from './../services/productos.service';
 
 @Controller('productos')
 export class ProductosController {
-  @Post()
-  create(@Body() payload: any) {
+  constructor(private productsService: ProductosService) {}
+
+  /*@Get()
+  getProducts(
+    @Query('limit') limit = 100,
+    @Query('offset') offset = 0,
+    @Query('brand') brand = '',
+  ) {
+    return this.productsService.findAll();
+  }*/
+
+  @Get('product/:idProduct')
+  getProduct(@Param('idProduct', ParseIntPipe) idProduct: string): string {
+    return `Producto con ID ${idProduct}`;
+  }
+
+  @Get('filter')
+  getProductFilter() {
     return {
-      message: 'acción de crear',
+      message: 'Yo soy un filter - NO Estoy Bloqueado',
+    };
+  }
+
+  @Get('listar')
+  findAll() {
+    return this.productsService.findAll();
+  }
+
+  @Get(':idProduct')
+  @HttpCode(HttpStatus.ACCEPTED)
+  getOne(@Param('idProduct', ParseIntPipe) idProduct: number) {
+    return this.productsService.findOne(idProduct);
+  }
+
+  @Post()
+  createProduct(@Body() payload: CreateProductDTO) {
+    return {
+      message: 'creaste un nuevo producto',
       payload,
     };
   }
 
-  @Put('product/:idProduct')
+  @Put('modificar/:idProduct')
   updateProducto(
     @Param('idProduct') idProduct: string,
-    @Body() body: any,
+    @Body() body: CreateProductDTO,
   ): any {
     return {
       idProduct: idProduct,
