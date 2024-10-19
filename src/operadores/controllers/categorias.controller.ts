@@ -11,9 +11,9 @@ import {
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateCategoryDTO } from 'src/dtos/categorias.dto';
+import { CreateCategoriasDTO } from 'src/operadores/dtos/categorias.dto';
 //import { ParseIntPipe } from '@nestjs/common';
-import { CategoriasService } from './../services/categorias.service';
+import { CategoriasService } from '../services/categorias.service';
 
 @Controller('categoria')
 export class CategoriasController {
@@ -52,7 +52,7 @@ export class CategoriasController {
   }
 
   @Post()
-  createProduct(@Body() payload: CreateCategoryDTO) {
+  createProduct(@Body() payload: CreateCategoriasDTO) {
     return {
       message: 'creaste una nueva categoria',
       payload,
@@ -62,7 +62,7 @@ export class CategoriasController {
   @Put('modificar/:idCategoria')
   updateProducto(
     @Param('idCategoria') idCategoria: string,
-    @Body() body: CreateCategoryDTO,
+    @Body() body: CreateCategoriasDTO,
   ): any {
     return {
       idCategoria: idCategoria,

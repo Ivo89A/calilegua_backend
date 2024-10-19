@@ -11,9 +11,9 @@ import {
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateFabricanteDTO } from 'src/dtos/fabricantes.dto';
+import { CreateFabricanteDTO } from 'src/operadores/dtos/fabricantes.dto';
 //import { ParseIntPipe } from '@nestjs/common';
-import { FabricantesService } from './../services/fabricantes.service';
+import { FabricantesService } from '../services/fabricantes.service';
 
 @Controller('fabricantes')
 export class FabricantesController {
@@ -34,7 +34,7 @@ export class FabricantesController {
   }
 
   @Get('filter')
-  getProductFilter() {
+  getFabricanteFilter() {
     return {
       message: 'Yo soy un filter - NO Estoy Bloqueado',
     };
@@ -45,10 +45,10 @@ export class FabricantesController {
     return this.FabricantesService.findAll();
   }
 
-  @Get(':idProduct')
+  @Get(':idFabricante')
   @HttpCode(HttpStatus.ACCEPTED)
-  getOne(@Param('idProduct', ParseIntPipe) idProduct: number) {
-    return this.FabricantesService.findOne(idProduct);
+  getOne(@Param('idFabricante', ParseIntPipe) idFabricante: number) {
+    return this.FabricantesService.findOne(idFabricante);
   }
 
   @Post()

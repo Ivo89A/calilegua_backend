@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   IsNotEmpty,
   IsString,
@@ -35,11 +36,6 @@ export class CreateProductDTO {
   readonly imagen: string;
 }
 
-export class UpdateProductDTO {
-  readonly nombre?: string;
-  readonly description?: string;
-  readonly precio?: number;
-  readonly stock?: number;
-  readonly origen?: string;
-  readonly imagen?: string;
-}
+export class UpdateProductDTO extends PartialType(
+  OmitType(CreateProductDTO, ['nombre']),
+) {}

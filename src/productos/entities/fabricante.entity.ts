@@ -1,5 +1,7 @@
 export class Fabricante {
   id: number;
   nombre: string;
-  origen: string;
+  direccion: string;
+  email: string;
+  imagen: string;
 }

@@ -11,9 +11,9 @@ import {
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateProductDTO } from 'src/dtos/productos.dto';
+import { CreateProductDTO } from 'src/operadores/dtos/productos.dto';
 //import { ParseIntPipe } from '@nestjs/common';
-import { ProductosService } from './../services/productos.service';
+import { ProductosService } from '../services/productos.service';
 
 @Controller('productos')
 export class ProductosController {

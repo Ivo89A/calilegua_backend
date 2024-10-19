@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Pedidos } from './../entities/pedidos.entity';
-import { CreatePedidosDTO } from './../dtos/pedidos.dto';
+import { Pedido } from '../entities/pedidos.entity';
+import { CreatePedidosDTO } from '../dtos/pedidos.dto';
 
 @Injectable()
 export class PedidosService {
   private idCont = 1;
-  private pedidos: Pedidos[] = [
+  private pedidos: Pedido[] = [
     {
       id: 1,
       nombre: 'Persona A',
