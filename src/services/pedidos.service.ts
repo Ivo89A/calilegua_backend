@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Pedidos } from './../entities/pedidos.entity';
-import { CreateFabricanteDTO } from './../dtos/pedidos.dto';
+import { CreatePedidosDTO } from './../dtos/pedidos.dto';
 
 @Injectable()
 export class PedidosService {
@@ -45,7 +45,7 @@ export class PedidosService {
     return newPedidos;
   }
 
-  /*update(id: number, payload: UpdateProductDTO) {
+  /*update(id: number, payload: UpdatePedidosDTO) {
       const product = this.findOne(id);
     }*/
 

@@ -17,7 +17,7 @@ import { ProductosService } from './../services/productos.service';
 
 @Controller('productos')
 export class ProductosController {
-  constructor(private productsService: ProductosService) {}
+  constructor(private ProductosService: ProductosService) {}
 
   @Get()
   getProducts(
@@ -25,12 +25,12 @@ export class ProductosController {
     @Query('offset') offset = 0,
     @Query('brand') brand = '',
   ) {
-    return this.productsService.findAll();
+    return this.ProductosService.findAll();
   }
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
-    return this.productsService.findOne(id);
+    return this.ProductosService.findOne(id);
   }
 
   @Get('filter')
@@ -42,13 +42,13 @@ export class ProductosController {
 
   @Get('listar')
   findAll() {
-    return this.productsService.findAll();
+    return this.ProductosService.findAll();
   }
 
   @Get(':idProduct')
   @HttpCode(HttpStatus.ACCEPTED)
   getOne(@Param('idProduct', ParseIntPipe) idProduct: number) {
-    return this.productsService.findOne(idProduct);
+    return this.ProductosService.findOne(idProduct);
   }
 
   @Post()
