@@ -1,6 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Pedido } from '../entities/pedidos.entity';
 import { CreatePedidosDTO } from '../dtos/pedidos.dto';
+import { Operador } from '../entities/operadores.entity';
+import { Producto } from 'src/productos/entities/producto.entity';
 
 @Injectable()
 export class PedidosService {
@@ -8,18 +10,21 @@ export class PedidosService {
   private pedidos: Pedido[] = [
     {
       id: 1,
-      nombre: 'Persona A',
-      origen: 'Taiwan',
+      date: new Date(2002, 2, 22),
+      operador: new Operador(),
+      products: [new Producto()],
     },
     {
       id: 2,
-      nombre: 'Persona B',
-      origen: 'Colombia',
+      date: new Date(2002, 2, 22),
+      operador: new Operador(),
+      products: [new Producto()],
     },
     {
       id: 3,
-      nombre: 'Persona C',
-      origen: 'Chile',
+      date: new Date(2002, 2, 22),
+      operador: new Operador(),
+      products: [new Producto()],
     },
   ];
 
@@ -46,15 +51,6 @@ export class PedidosService {
   }
 
   /*update(id: number, payload: UpdatePedidosDTO) {
-      const product = this.findOne(id);
+    const product = this.findOne(id);
     }*/
-
-  remove(id: number) {
-    const index = this.pedidos.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw new NotFoundException(`El pedido #${id} no se encuentra`);
-    }
-    this.pedidos.splice(index, 1);
-    return true;
-  }
 }

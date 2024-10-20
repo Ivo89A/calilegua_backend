@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Fabricante } from '../../productos/entities/fabricante.entity';
-import { CreateFabricanteDTO } from '../dtos/fabricantes.dto';
+import { Fabricante } from '../entities/fabricante.entity';
+import { CreateFabricanteDTO } from '../../operadores/dtos/fabricantes.dto';
 
 @Injectable()
 export class FabricantesService {
@@ -9,17 +9,23 @@ export class FabricantesService {
     {
       id: 1,
       nombre: 'ACME',
-      origen: 'China',
+      direccion: '42342 Victoria',
+      email: 'user342@gmail.com',
+      imagen: '',
     },
     {
       id: 2,
       nombre: 'Prod B',
-      origen: 'Japón',
+      direccion: 'Calle Japón',
+      email: 'vvoavmo@gmail.com',
+      imagen: '',
     },
     {
       id: 3,
       nombre: 'Prod C',
-      origen: 'EEUU',
+      direccion: 'EEUU',
+      email: 'user@gmail.com',
+      imagen: '',
     },
   ];
 

@@ -20,7 +20,7 @@ export class PedidosController {
   constructor(private PedidosService: PedidosService) {}
 
   @Get()
-  getProducts(
+  getPedidos(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand = '',

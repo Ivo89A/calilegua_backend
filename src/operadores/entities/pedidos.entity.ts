@@ -1,8 +1,9 @@
-import { Operador } from './operador.entity'
-import { Producto } from "src/productos/entities/producto.entity";
+import { Operador } from './operadores.entity';
+import { Producto } from 'src/productos/entities/producto.entity';
 
 export class Pedido {
+  id: number;
   date: Date;
-  operador: string;
+  operador: Operador;
   products: Producto[];
 }
