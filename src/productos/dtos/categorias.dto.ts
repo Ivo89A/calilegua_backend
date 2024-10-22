@@ -1,9 +1,9 @@
 import { IsString, IsNotEmpty, IsNumber, IsPositive } from 'class-validator';
 
-import { ApiProperty, PartialType } from 'nestjs/swagger';
+//import { ApiProperty, PartialType } from 'nestjs/swagger';
 
 export class CreateCategoriasDTO {
-  @ApiProperty()
+  //@ApiProperty()
   @IsString()
   @IsNotEmpty()
   readonly nombre: string;
@@ -14,4 +14,4 @@ export class CreateCategoriasDTO {
   readonly description: string;
 }
 
-export class UpdateCategoriasDTO extends PartialType(CreateCategoriasDTO) {}
+//export class UpdateCategoriasDTO extends PartialType(CreateCategoriasDTO) {}

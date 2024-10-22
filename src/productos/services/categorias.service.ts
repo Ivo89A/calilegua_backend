@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Categorias } from '../entities/categorias.entity';
-//import { CreateProductDTO, UpdateProductDTO } from './../dtos/productos.dto.ts';
+import { CreateProductDTO } from '../../productos/dtos/productos.dto';
 
 @Injectable()
 export class CategoriasService {
@@ -9,19 +9,19 @@ export class CategoriasService {
     {
       id: 1,
       nombre: 'Categoria A',
-      descripcion: 'Descripcion del categoria A',
+      description: 'Descripcion del categoria A',
       stock: 1,
     },
     {
       id: 2,
       nombre: 'Categoria B',
-      descripcion: 'Descripcion del categoria B',
+      description: 'Descripcion del categoria B',
       stock: 1,
     },
     {
       id: 3,
       nombre: 'Categoria C',
-      descripcion: 'Descripcion del categoria C',
+      description: 'Descripcion del categoria C',
       stock: 7,
     },
   ];
@@ -38,7 +38,7 @@ export class CategoriasService {
     return category;
   }
 
-  create(payload: any) {
+  create(payload: CreateProductDTO) {
     this.idCont = this.idCont + 1;
     const newCategory = {
       id: this.idCont,

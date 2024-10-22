@@ -1,20 +1,20 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsArray, IsString } from 'class-validator';
+import { Operador } from '../entities/operadores.entity';
 
 export class CreatePedidosDTO {
   @IsString()
   @IsNotEmpty()
-  readonly nombre: string;
-
-  @IsString()
+  readonly date: string;
+  @IsNumber()
   @IsNotEmpty()
-  readonly origen: string;
+  readonly operador: Operador;
+  @IsArray()
+  @IsNotEmpty()
+  readonly products: number[];
 }
 
 export class UpdatePedidosDTO {
-  readonly nombre?: string;
-  readonly description?: string;
-  readonly precio?: number;
-  readonly stock?: number;
-  readonly origen?: string;
-  readonly imagen?: string;
+  readonly date: string;
+  readonly operador: Operador;
+  readonly products: number[];
 }

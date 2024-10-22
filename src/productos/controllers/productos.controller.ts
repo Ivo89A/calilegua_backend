@@ -6,12 +6,12 @@ import {
   Delete,
   Param,
   Put,
-  Query,
+  //Query,
   HttpStatus,
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateProductDTO } from 'src/operadores/dtos/productos.dto';
+import { CreateProductDTO } from 'src/productos/dtos/productos.dto';
 //import { ParseIntPipe } from '@nestjs/common';
 import { ProductosService } from '../services/productos.service';
 
@@ -19,14 +19,14 @@ import { ProductosService } from '../services/productos.service';
 export class ProductosController {
   constructor(private ProductosService: ProductosService) {}
 
-  @Get()
+  /*@Get()
   getProducts(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand = '',
   ) {
     return this.ProductosService.findAll();
-  }
+  }*/
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {

@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Fabricante } from '../entities/fabricante.entity';
-import { CreateFabricanteDTO } from '../../operadores/dtos/fabricantes.dto';
+import { CreateFabricanteDTO } from '../../productos/dtos/fabricantes.dto';
 
 @Injectable()
 export class FabricantesService {

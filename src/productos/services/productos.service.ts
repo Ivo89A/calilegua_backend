@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Producto } from '../entities/producto.entity';
-//import { CreateProductDTO, UpdateProductDTO } from './../dtos/productos.dto.ts';
+import { CreateProductDTO } from '../../productos/dtos/productos.dto';
 
 @Injectable()
 export class ProductosService {
@@ -9,7 +9,7 @@ export class ProductosService {
     {
       id: 1,
       nombre: 'Prod A',
-      descripcion: 'Descripcion del producto A',
+      description: 'Descripcion del producto A',
       precio: 6500,
       stock: 1,
       origen: 'China',
@@ -18,7 +18,7 @@ export class ProductosService {
     {
       id: 2,
       nombre: 'Prod B',
-      descripcion: 'Descripcion del producto B',
+      description: 'Descripcion del producto B',
       precio: 7500,
       stock: 1,
       origen: 'Japón',
@@ -27,7 +27,7 @@ export class ProductosService {
     {
       id: 3,
       nombre: 'Prod C',
-      descripcion: 'Descripcion del producto C',
+      description: 'Descripcion del producto C',
       precio: 9500,
       stock: 7,
       origen: 'EEUU',
@@ -47,7 +47,7 @@ export class ProductosService {
     return product;
   }
 
-  create(payload: any) {
+  create(payload: CreateProductDTO) {
     this.idCont = this.idCont + 1;
     const newProduct = {
       id: this.idCont,
@@ -57,9 +57,9 @@ export class ProductosService {
     return newProduct;
   }
 
-  /*update(id: number, payload: UpdateProductDTO) {
+  update(id: number) {
     const product = this.findOne(id);
-  }*/
+  }
 
   remove(id: number) {
     const index = this.productos.findIndex((item) => item.id === id);

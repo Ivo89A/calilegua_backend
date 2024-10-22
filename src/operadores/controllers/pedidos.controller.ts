@@ -6,7 +6,7 @@ import {
   Delete,
   Param,
   Put,
-  Query,
+  //Query,
   HttpStatus,
   HttpCode,
   ParseIntPipe,
@@ -19,14 +19,14 @@ import { PedidosService } from '../services/pedidos.service';
 export class PedidosController {
   constructor(private PedidosService: PedidosService) {}
 
-  @Get()
+  /*@Get()
   getPedidos(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand = '',
   ) {
     return this.PedidosService.findAll();
-  }
+  }*/
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
@@ -66,8 +66,9 @@ export class PedidosController {
   ): any {
     return {
       idProduct: idProduct,
-      nombre: body.nombre,
-      origen: body.origen,
+      date: body.date,
+      operador: body.operador,
+      products: body.products,
     };
   }
 

@@ -6,12 +6,12 @@ import {
   Delete,
   Param,
   Put,
-  Query,
+  //Query,
   HttpStatus,
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateFabricanteDTO } from 'src/operadores/dtos/fabricantes.dto';
+import { CreateFabricanteDTO } from 'src/productos/dtos/fabricantes.dto';
 //import { ParseIntPipe } from '@nestjs/common';
 import { FabricantesService } from '../services/fabricantes.service';
 
@@ -19,14 +19,14 @@ import { FabricantesService } from '../services/fabricantes.service';
 export class FabricantesController {
   constructor(private FabricantesService: FabricantesService) {}
 
-  @Get()
+  /*@Get()
   getProducts(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand = '',
   ) {
     return this.FabricantesService.findAll();
-  }
+  }*/
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {

@@ -17,6 +17,10 @@ export class CreateFabricanteDTO {
   @IsUrl()
   @IsNotEmpty()
   readonly origen: string;
+
+  @IsUrl()
+  @IsNotEmpty()
+  readonly imagen: string;
 }
 
 export class UpdateFabricanteDTO extends PartialType(

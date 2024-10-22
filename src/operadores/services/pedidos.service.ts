@@ -10,19 +10,19 @@ export class PedidosService {
   private pedidos: Pedido[] = [
     {
       id: 1,
-      date: new Date(2002, 2, 22),
+      date: '22-08-13 ',
       operador: new Operador(),
       products: [new Producto()],
     },
     {
       id: 2,
-      date: new Date(2002, 2, 22),
+      date: '22-08-13 ',
       operador: new Operador(),
       products: [new Producto()],
     },
     {
       id: 3,
-      date: new Date(2002, 2, 22),
+      date: '22-08-13 ',
       operador: new Operador(),
       products: [new Producto()],
     },
