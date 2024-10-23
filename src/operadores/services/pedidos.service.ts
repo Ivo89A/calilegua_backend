@@ -10,19 +10,19 @@ export class PedidosService {
   private pedidos: Pedido[] = [
     {
       id: 1,
-      date: '22-08-13 ',
+      date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
     },
     {
       id: 2,
-      date: '22-08-13 ',
+      date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
     },
     {
       id: 3,
-      date: '22-08-13 ',
+      date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
     },
@@ -31,13 +31,16 @@ export class PedidosService {
   findAll() {
     return this.pedidos;
   }
-
   findOne(id: number) {
-    const pedido = this.pedidos.find((item) => item.id === id);
-    if (!pedido) {
+    const foundInPedidos = this.pedidos.find((item) => item.id === id);
+
+    // Combinar los resultados
+    const category = foundInPedidos;
+    if (!category) {
       throw new NotFoundException(`El pedido con id: #${id} no existe`);
     }
-    return pedido;
+
+    return category; // Retornar el pedido encontrado
   }
 
   create(payload: CreatePedidosDTO) {
@@ -45,6 +48,9 @@ export class PedidosService {
     const newPedidos = {
       id: this.idCont,
       ...payload,
+      products: Array.isArray(payload.products)
+        ? payload.products
+        : [payload.products],
     };
     this.pedidos.push(newPedidos);
     return newPedidos;

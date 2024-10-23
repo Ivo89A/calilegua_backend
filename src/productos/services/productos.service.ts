@@ -57,9 +57,9 @@ export class ProductosService {
     return newProduct;
   }
 
-  update(id: number) {
+  /*update(id: number) {
     const product = this.findOne(id);
-  }
+  }*/
 
   remove(id: number) {
     const index = this.productos.findIndex((item) => item.id === id);

@@ -3,7 +3,7 @@ import { Producto } from 'src/productos/entities/producto.entity';
 
 export class Pedido {
   id: number;
-  date: string;
+  date: Date;
   operador: Operador;
   products: Producto[];
 }

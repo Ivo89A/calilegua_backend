@@ -19,5 +19,6 @@ import { ProductosService } from './services/productos.service';
     CompradoresService,
     CategoriasService,
   ],
+  exports: [ProductosService], // Exportamos ProductosService para usarlo en otros módulos
 })
 export class ProductosModule {}
