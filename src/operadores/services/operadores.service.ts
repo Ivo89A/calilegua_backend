@@ -12,13 +12,10 @@ export class OperadoresService {
 
   getOrderByUser(id: number): Pedido {
     const operador = this.findOne(id);
-    const products = this.productsService.findAll();
-
     return {
-      id: Math.floor(Math.random() * 1000),
       date: new Date(),
       operador,
-      products,
+      products: this.productsService.findAll(),
     };
   }
 }

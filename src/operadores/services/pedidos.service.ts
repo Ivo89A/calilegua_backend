@@ -9,19 +9,16 @@ export class PedidosService {
   private idCont = 1;
   private pedidos: Pedido[] = [
     {
-      id: 1,
       date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
     },
     {
-      id: 2,
       date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
     },
     {
-      id: 3,
       date: new Date('22-08-13'),
       operador: new Operador(),
       products: [new Producto()],
@@ -32,7 +29,7 @@ export class PedidosService {
     return this.pedidos;
   }
   findOne(id: number) {
-    const foundInPedidos = this.pedidos.find((item) => item.id === id);
+    const foundInPedidos = this.pedidos.find((item) => item);
 
     // Combinar los resultados
     const category = foundInPedidos;
