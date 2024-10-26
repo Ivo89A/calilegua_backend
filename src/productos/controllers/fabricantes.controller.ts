@@ -14,6 +14,7 @@ import {
 import { CreateFabricanteDTO } from 'src/productos/dtos/fabricantes.dto';
 //import { ParseIntPipe } from '@nestjs/common';
 import { FabricantesService } from '../services/fabricantes.service';
+import { resourceLimits } from 'worker_threads';
 
 @Controller('fabricantes')
 export class FabricantesController {
@@ -49,6 +50,11 @@ export class FabricantesController {
   @HttpCode(HttpStatus.ACCEPTED)
   getOne(@Param('idFabricante', ParseIntPipe) idFabricante: number) {
     return this.FabricantesService.findOne(idFabricante);
+  }
+
+  @Get('usefactory')
+  getUseFactory(): string {
+    return this.appService.getUseFactory();
   }
 
   @Post()

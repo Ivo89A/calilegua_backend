@@ -63,4 +63,8 @@ export class FabricantesService {
     this.fabricantes.splice(index, 1);
     return true;
   }
+  getUseFactory(): string {
+    console.log(this.tarea);
+    return 'Realizando una tarea asincronica de ejemplo';
+  }
 }
