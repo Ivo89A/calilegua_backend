@@ -5,15 +5,25 @@ import { OperadoresModule } from './operadores/operadores.module';
 import { ProductosModule } from './productos/productos.module';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
-import { ConfigModule } from './config/config.module';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
 
 const APIKEY = 'DEV-456';
 const APIKEYPROD = 'PROD-12345';
 
 @Module({
-  imports: [OperadoresModule, ProductosModule, ConfigModule],
+  imports: [
+    OperadoresModule,
+    ProductosModule,
+    ConfigModule,
+    HttpModule,
+    DatabaseModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+  ],
   controllers: [AppController],
-
   providers: [
     AppService,
     {
@@ -22,8 +32,11 @@ const APIKEYPROD = 'PROD-12345';
     },
     {
       provide: 'TAREA_ASINC',
-      useFactory: async (http: HttpModule) => {
-        const req = http.get('https://jsonplaceholder.typicode.com/posts');
+      useFactory: async (httpService: HttpService) => {
+        // Cambia HttpModule por HttpService
+        const req = httpService.get(
+          'https://jsonplaceholder.typicode.com/posts',
+        );
         const tarea = await lastValueFrom(req);
         return tarea.data;
       },

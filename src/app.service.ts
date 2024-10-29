@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, Get } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import config from '../config';
 

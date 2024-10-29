@@ -6,6 +6,7 @@ import { CompradoresService } from 'src/operadores/services/compradores.service'
 import { CategoriasService } from './services/categorias.service';
 import { FabricantesService } from './services/fabricantes.service';
 import { ProductosService } from './services/productos.service';
+import { AppModule } from 'src/app.module';
 
 @Module({
   controllers: [
@@ -18,6 +19,7 @@ import { ProductosService } from './services/productos.service';
     FabricantesService,
     CompradoresService,
     CategoriasService,
+    AppModule,
   ],
   exports: [ProductosService], // Exportamos ProductosService para usarlo en otros módulos
 })

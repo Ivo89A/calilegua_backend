@@ -3,12 +3,12 @@ import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { OperadoresService } from '../services/operadores.service';
 //import { CreateOperadorDTO, UpdateOperadorDTO } from '../dtos/operador.dto';
 
-@Controller('controller')
+@Controller('operadores')
 export class OperadoresController {
-  constructor(private OperadoresService: OperadoresService) {}
+  constructor(private readonly OperadoresService: OperadoresService) {}
 
-  @Get(':id/pedidos')
-  getOrders(@Param('id', ParseIntPipe) id: number) {
-    return this.OperadoresService.getOrderByUser(id);
+  @Get(':userId/pedidos')
+  getOrders(@Param('id', ParseIntPipe) userId: number) {
+    return this.OperadoresService.getOrderByUser(userId);
   }
 }

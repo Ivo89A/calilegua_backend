@@ -6,32 +6,25 @@ import {
   Delete,
   Param,
   Put,
-  //Query,
   HttpStatus,
   HttpCode,
   ParseIntPipe,
 } from '@nestjs/common';
 import { CreateFabricanteDTO } from 'src/productos/dtos/fabricantes.dto';
-//import { ParseIntPipe } from '@nestjs/common';
 import { FabricantesService } from '../services/fabricantes.service';
-import { resourceLimits } from 'worker_threads';
+import { AppService } from 'src/app.service';
 
 @Controller('fabricantes')
 export class FabricantesController {
-  constructor(private FabricantesService: FabricantesService) {}
-
-  /*@Get()
-  getProducts(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    @Query('brand') brand = '',
-  ) {
-    return this.FabricantesService.findAll();
-  }*/
+  // Inyecta tanto FabricantesService como AppService
+  constructor(
+    private readonly fabricantesService: FabricantesService,
+    private readonly appService: AppService,
+  ) {}
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
-    return this.FabricantesService.findOne(id);
+    return this.fabricantesService.findOne(id);
   }
 
   @Get('filter')
@@ -43,19 +36,19 @@ export class FabricantesController {
 
   @Get('listar')
   findAll() {
-    return this.FabricantesService.findAll();
+    return this.fabricantesService.findAll();
   }
 
   @Get(':idFabricante')
   @HttpCode(HttpStatus.ACCEPTED)
   getOne(@Param('idFabricante', ParseIntPipe) idFabricante: number) {
-    return this.FabricantesService.findOne(idFabricante);
+    return this.fabricantesService.findOne(idFabricante);
   }
 
-  @Get('usefactory')
+  /*@Get('useFactory')
   getUseFactory(): string {
     return this.appService.getUseFactory();
-  }
+  }*/
 
   @Post()
   createProduct(@Body() payload: CreateFabricanteDTO) {
