@@ -8,11 +8,14 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class OperadoresService {
   findOne: any;
+  private operadores: any[];
   constructor(
     private readonly productsService: ProductosService,
     private configService: ConfigService, //Inyeccion de dependencias de ConfigService
     @Inject('APIKEY') private apiKey: string,
-  ) {}
+  ) {
+    this.operadores = [];
+  }
 
   findAll() {
     const apiKey = this.configService.get('API_KEY');

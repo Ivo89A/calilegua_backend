@@ -1,27 +1,30 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { OperadoresModule } from './operadores/operadores.module';
 import { ProductosModule } from './productos/productos.module';
+import { OperadoresModule } from './operadores/operadores.module';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
+import { AppConfigModule } from './config/app.config';
+import config from '../config';
 
 const APIKEY = 'DEV-456';
 const APIKEYPROD = 'PROD-12345';
 
 @Module({
   imports: [
-    OperadoresModule,
-    ProductosModule,
-    ConfigModule,
-    HttpModule,
-    DatabaseModule,
+    forwardRef(() => OperadoresModule), // Usa forwardRef aquí si hay una dependencia circular
+    forwardRef(() => ProductosModule), // Usa forwardRef aquí si hay una dependencia circular
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
+      load: [config],
     }),
+    HttpModule,
+    DatabaseModule,
+    AppConfigModule,
   ],
   controllers: [AppController],
   providers: [
@@ -33,7 +36,6 @@ const APIKEYPROD = 'PROD-12345';
     {
       provide: 'TAREA_ASINC',
       useFactory: async (httpService: HttpService) => {
-        // Cambia HttpModule por HttpService
         const req = httpService.get(
           'https://jsonplaceholder.typicode.com/posts',
         );
@@ -43,5 +45,6 @@ const APIKEYPROD = 'PROD-12345';
       inject: [HttpService],
     },
   ],
+  exports: [AppService],
 })
 export class AppModule {}
